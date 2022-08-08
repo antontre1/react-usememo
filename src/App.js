@@ -13,6 +13,9 @@ function App() {
     color: dark ? 'white' : 'black'
   }
 
+  // useEffect is called each time, because the 'dependency' added here [themeStyles] is considering the value as updated because it's actually
+  // a new value that has been given. It's not the same object, even with the same values, the references are not the same in memory
+  // so it's considered new ! and useEffect is triggered
   useEffect(() => {
     console.log('Theme has Changed')
   }, [themeStyles])
