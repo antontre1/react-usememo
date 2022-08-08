@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 function App() {
 
@@ -12,6 +12,10 @@ function App() {
     backgroundColor: dark ? 'black' : 'white',
     color: dark ? 'white' : 'black'
   }
+
+  useEffect(() => {
+    console.log('Theme has Changed')
+  }, [themeStyles])
 
 
   return (
