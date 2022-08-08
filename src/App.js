@@ -8,10 +8,15 @@ function App() {
     // ensure the value is returned
     return slowFunction(number)
   }, [number] )
-  const themeStyles = {
-    backgroundColor: dark ? 'black' : 'white',
-    color: dark ? 'white' : 'black'
-  }
+
+  // so now, when we add useMemo for the themeStyle with 'dark' as a dependency value
+  // thanks to this themeStyles is updated only when dark change
+  const themeStyles = useMemo(() => {
+    return {
+      backgroundColor: dark ? 'black' : 'white',
+      color: dark ? 'white' : 'black'
+    }
+  }, [dark])
 
   // useEffect is called each time, because the 'dependency' added here [themeStyles] is considering the value as updated because it's actually
   // a new value that has been given. It's not the same object, even with the same values, the references are not the same in memory
